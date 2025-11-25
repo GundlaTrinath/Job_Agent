@@ -11,11 +11,15 @@ import os
 app = FastAPI(title="Multi-Agent Job Assistant")
 
 # CORS - Use environment variable for production, allow all for development
-allowed_origins = os.getenv("FRONTEND_URL", "*").split(",")
+frontend_url = os.getenv("FRONTEND_URL", "")
+if frontend_url:
+    allowed_origins = [url.strip() for url in frontend_url.split(",")]
+else:
+    allowed_origins = ["*"]  # Development mode
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=allowed_origins if allowed_origins != ["*"] else ["*"],
+    allow_origins=allowed_origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
