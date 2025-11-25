@@ -1,15 +1,10 @@
-import axios from 'axios';
+import API_BASE_URL from '../config';
 
-const api = axios.create({
-  baseURL: 'http://localhost:8000/api',
-  headers: {
-    'Content-Type': 'application/json',
-  },
-});
-
-export const sendMessage = async (message, context = {}) => {
-  const response = await api.post('/chat', { message, context });
-  return response.data;
+export const sendMessage = async (message) => {
+  const response = await fetch(`${API_BASE_URL}/api/chat`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ message })
+  });
+  return response.json();
 };
-
-export default api;
