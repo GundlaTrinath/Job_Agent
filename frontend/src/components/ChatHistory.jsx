@@ -252,3 +252,4 @@ const ChatHistory = ({ onSessionSwitch, currentSessionId }) => {
 
 export default ChatHistory;
 
+
