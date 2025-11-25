@@ -28,6 +28,15 @@ app.add_middleware(
 orchestrator = OrchestratorAgent()
 resume_agent = ResumeReviewerAgent()
 
+# Root endpoint for health check
+@app.get("/")
+async def root():
+    return {
+        "status": "ok",
+        "message": "Job Agent API is running",
+        "cors_origins": allowed_origins
+    }
+
 class ChatRequest(BaseModel):
     message: str
     context: Optional[dict] = {}
