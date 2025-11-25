@@ -316,6 +316,19 @@ class Database:
         })
         self.conn.commit()
 
+    def update_user_preference(self, key: str, value: Any):
+        """Update a specific preference key in user profile"""
+        profile = self.get_user_profile()
+        preferences = profile.get('preferences', {})
+        preferences[key] = value
+        
+        self.cursor.execute("""
+            UPDATE user_profile
+            SET preferences = ?
+            WHERE id = (SELECT id FROM user_profile LIMIT 1)
+        """, (json.dumps(preferences),))
+        self.conn.commit()
+
     def get_user_context(self) -> Dict:
         profile = self.get_user_profile()
         session = self.get_active_session()

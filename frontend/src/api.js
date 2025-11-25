@@ -1,4 +1,4 @@
-import API_BASE_URL from '../config';
+import API_BASE_URL from './config';
 
 export const sendMessage = async (message) => {
   const response = await fetch(`${API_BASE_URL}/api/chat`, {
