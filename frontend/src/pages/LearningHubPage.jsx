@@ -3,6 +3,7 @@ import axios from 'axios';
 import { motion } from 'framer-motion';
 import { BookOpen, Video, Code, TrendingUp, CheckCircle2, Award, Clock, Target, ExternalLink } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import API_BASE_URL from '../config';
 import Skeleton from '../components/Skeleton';
 
 const LearningHubPage = () => {
@@ -16,15 +17,15 @@ const LearningHubPage = () => {
         const fetchData = async () => {
             try {
                 // Fetch learning paths
-                const pathsRes = await axios.get('${API_BASE_URL}/api/learning/all');
+                const pathsRes = await axios.get(`${API_BASE_URL}/api/learning/all`);
                 setLearningPaths(pathsRes.data || []);
 
                 // Fetch available skill tests
-                const testsRes = await axios.get('${API_BASE_URL}/api/tests');
+                const testsRes = await axios.get(`${API_BASE_URL}/api/tests`);
                 setSkillTests(testsRes.data || []);
 
                 // Fetch test history
-                const resultsRes = await axios.get('${API_BASE_URL}/api/tests/results');
+                const resultsRes = await axios.get(`${API_BASE_URL}/api/tests/results`);
                 setTestResults(resultsRes.data || []);
             } catch (e) {
                 console.error('Failed to fetch learning data:', e);

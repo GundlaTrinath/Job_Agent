@@ -5,6 +5,7 @@ import { Briefcase, TrendingUp, Award, FileText, ArrowRight, UserPlus } from 'lu
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import Skeleton from '../components/Skeleton';
 import { useNavigate } from 'react-router-dom';
+import API_BASE_URL from '../config';
 
 const DashboardPage = () => {
     const navigate = useNavigate();
@@ -23,8 +24,8 @@ const DashboardPage = () => {
         const fetchData = async () => {
             try {
                 const [statsRes, profileRes] = await Promise.all([
-                    axios.get('${API_BASE_URL}/api/dashboard'),
-                    axios.get('${API_BASE_URL}/api/profile')
+                    axios.get(`${API_BASE_URL}/api/dashboard`),
+                    axios.get(`${API_BASE_URL}/api/profile`)
                 ]);
                 setStats(statsRes.data);
                 setUser(profileRes.data);

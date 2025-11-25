@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { motion } from 'framer-motion';
 import { User, Mail, MapPin, Briefcase, DollarSign, Save, Plus, X, Edit2 } from 'lucide-react';
+import API_BASE_URL from '../config';
 import Skeleton from '../components/Skeleton';
 
 const ProfilePage = () => {
@@ -22,7 +23,7 @@ const ProfilePage = () => {
     useEffect(() => {
         const fetchProfile = async () => {
             try {
-                const res = await axios.get('${API_BASE_URL}/api/profile');
+                const res = await axios.get(`${API_BASE_URL}/api/profile`);
                 if (res.data && res.data.name) {
                     setProfile(res.data);
                 }
@@ -37,7 +38,7 @@ const ProfilePage = () => {
 
     const handleSave = async () => {
         try {
-            await axios.put('${API_BASE_URL}/api/profile', profile);
+            await axios.put(`${API_BASE_URL}/api/profile`, profile);
             setIsEditing(false);
         } catch (e) {
             console.error("Failed to save profile", e);

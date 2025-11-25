@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { motion, AnimatePresence } from 'framer-motion';
 import { MessageSquare, Plus, Trash2, Clock } from 'lucide-react';
+import API_BASE_URL from '../config';
 
 const ChatHistory = ({ onSessionSwitch, currentSessionId }) => {
     const [sessions, setSessions] = useState([]);
@@ -13,7 +14,7 @@ const ChatHistory = ({ onSessionSwitch, currentSessionId }) => {
 
     const fetchSessions = async () => {
         try {
-            const res = await axios.get('${API_BASE_URL}/api/chat/sessions');
+            const res = await axios.get(`${API_BASE_URL}/api/chat/sessions`);
             setSessions(res.data.sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at)));
         } catch (e) {
             console.error(e);
@@ -22,7 +23,7 @@ const ChatHistory = ({ onSessionSwitch, currentSessionId }) => {
 
     const createNewSession = async () => {
         try {
-            const res = await axios.post('${API_BASE_URL}/api/chat/sessions');
+            const res = await axios.post(`${API_BASE_URL}/api/chat/sessions`);
             setSessions(prev => [res.data, ...prev]);
             onSessionSwitch(res.data.id);
             setIsOpen(false);

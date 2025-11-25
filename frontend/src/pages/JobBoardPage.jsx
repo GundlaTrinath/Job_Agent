@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { MapPin, DollarSign, Building, Calendar, CheckCircle2, MessageSquare, ExternalLink } from 'lucide-react';
 import Skeleton from '../components/Skeleton';
 import { useNavigate } from 'react-router-dom';
+import API_BASE_URL from '../config';
 
 const JobBoardPage = () => {
     const navigate = useNavigate();
@@ -13,7 +14,7 @@ const JobBoardPage = () => {
     useEffect(() => {
         const fetchJobs = async () => {
             try {
-                const res = await axios.get('${API_BASE_URL}/api/jobs');
+                const res = await axios.get(`${API_BASE_URL}/api/jobs`);
                 setJobs(res.data);
             } catch (e) {
                 console.error(e);
