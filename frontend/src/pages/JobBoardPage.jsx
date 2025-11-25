@@ -13,7 +13,7 @@ const JobBoardPage = () => {
     useEffect(() => {
         const fetchJobs = async () => {
             try {
-                const res = await axios.get('http://localhost:8000/api/jobs');
+                const res = await axios.get('${API_BASE_URL}/api/jobs');
                 setJobs(res.data);
             } catch (e) {
                 console.error(e);
@@ -31,7 +31,7 @@ const JobBoardPage = () => {
 
             // Mark as viewed
             try {
-                await axios.post(`http://localhost:8000/api/jobs/${job.id}/apply`);
+                await axios.post(`${API_BASE_URL}/api/jobs/${job.id}/apply`);
                 setJobs(prev => prev.map(j => j.id === job.id ? {
                     ...j,
                     status: 'Applied'
@@ -44,7 +44,7 @@ const JobBoardPage = () => {
 
         // Regular job application
         try {
-            await axios.post(`http://localhost:8000/api/jobs/${job.id}/apply`);
+            await axios.post(`${API_BASE_URL}/api/jobs/${job.id}/apply`);
             setJobs(prev => prev.map(j => j.id === job.id ? {
                 ...j,
                 status: 'Applied',
@@ -244,3 +244,4 @@ const JobBoardPage = () => {
 };
 
 export default JobBoardPage;
+

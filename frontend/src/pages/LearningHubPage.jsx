@@ -16,15 +16,15 @@ const LearningHubPage = () => {
         const fetchData = async () => {
             try {
                 // Fetch learning paths
-                const pathsRes = await axios.get('http://localhost:8000/api/learning/all');
+                const pathsRes = await axios.get('${API_BASE_URL}/api/learning/all');
                 setLearningPaths(pathsRes.data || []);
 
                 // Fetch available skill tests
-                const testsRes = await axios.get('http://localhost:8000/api/tests');
+                const testsRes = await axios.get('${API_BASE_URL}/api/tests');
                 setSkillTests(testsRes.data || []);
 
                 // Fetch test history
-                const resultsRes = await axios.get('http://localhost:8000/api/tests/results');
+                const resultsRes = await axios.get('${API_BASE_URL}/api/tests/results');
                 setTestResults(resultsRes.data || []);
             } catch (e) {
                 console.error('Failed to fetch learning data:', e);
@@ -297,3 +297,4 @@ const LearningHubPage = () => {
 };
 
 export default LearningHubPage;
+

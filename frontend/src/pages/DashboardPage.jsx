@@ -23,8 +23,8 @@ const DashboardPage = () => {
         const fetchData = async () => {
             try {
                 const [statsRes, profileRes] = await Promise.all([
-                    axios.get('http://localhost:8000/api/dashboard'),
-                    axios.get('http://localhost:8000/api/profile')
+                    axios.get('${API_BASE_URL}/api/dashboard'),
+                    axios.get('${API_BASE_URL}/api/profile')
                 ]);
                 setStats(statsRes.data);
                 setUser(profileRes.data);
@@ -264,3 +264,4 @@ const StatCard = ({ icon, label, value, color, loading }) => (
 );
 
 export default DashboardPage;
+

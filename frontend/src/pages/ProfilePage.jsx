@@ -22,7 +22,7 @@ const ProfilePage = () => {
     useEffect(() => {
         const fetchProfile = async () => {
             try {
-                const res = await axios.get('http://localhost:8000/api/profile');
+                const res = await axios.get('${API_BASE_URL}/api/profile');
                 if (res.data && res.data.name) {
                     setProfile(res.data);
                 }
@@ -37,7 +37,7 @@ const ProfilePage = () => {
 
     const handleSave = async () => {
         try {
-            await axios.put('http://localhost:8000/api/profile', profile);
+            await axios.put('${API_BASE_URL}/api/profile', profile);
             setIsEditing(false);
         } catch (e) {
             console.error("Failed to save profile", e);
@@ -359,3 +359,4 @@ const ProfilePage = () => {
 };
 
 export default ProfilePage;
+

@@ -12,7 +12,7 @@ const ResumePage = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const res = await axios.get('http://localhost:8000/api/resume');
+                const res = await axios.get('${API_BASE_URL}/api/resume');
                 setData(res.data);
             } catch (e) {
                 console.error(e);
@@ -62,7 +62,7 @@ const ResumePage = () => {
         formData.append('file', uploadedFile);
 
         try {
-            const res = await axios.post('http://localhost:8000/api/resume/upload', formData, {
+            const res = await axios.post('${API_BASE_URL}/api/resume/upload', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
@@ -284,3 +284,4 @@ const ResumePage = () => {
 };
 
 export default ResumePage;
+

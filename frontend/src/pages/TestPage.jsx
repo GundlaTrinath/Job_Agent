@@ -3,7 +3,7 @@ import axios from 'axios';
 import { motion } from 'framer-motion';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Clock, CheckCircle2, XCircle, Award, ArrowLeft, ChevronRight } from 'lucide-react';
-import Skeleton from '../components/Skeleton';
+import API_BASE_URL from '../config';
 
 const TestPage = () => {
     const { testId } = useParams();
@@ -20,7 +20,7 @@ const TestPage = () => {
     useEffect(() => {
         const fetchTest = async () => {
             try {
-                const res = await axios.get(`http://localhost:8000/api/tests/${testId}`);
+                const res = await axios.get(`${API_BASE_URL}/api/tests/${testId}`);
                 setTest(res.data);
             } catch (e) {
                 console.error('Failed to fetch test:', e);
@@ -41,7 +41,7 @@ const TestPage = () => {
         const timeTaken = Math.floor((Date.now() - startTime) / 1000); // seconds
 
         try {
-            const res = await axios.post(`http://localhost:8000/api/tests/${testId}/submit`, {
+            const res = await axios.post(`${API_BASE_URL}/api/tests/${testId}/submit`, {
                 answers,
                 time_taken: timeTaken
             });
@@ -392,3 +392,4 @@ const TestPage = () => {
 };
 
 export default TestPage;
+

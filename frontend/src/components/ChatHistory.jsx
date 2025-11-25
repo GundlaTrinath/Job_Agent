@@ -13,7 +13,7 @@ const ChatHistory = ({ onSessionSwitch, currentSessionId }) => {
 
     const fetchSessions = async () => {
         try {
-            const res = await axios.get('http://localhost:8000/api/chat/sessions');
+            const res = await axios.get('${API_BASE_URL}/api/chat/sessions');
             setSessions(res.data.sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at)));
         } catch (e) {
             console.error(e);
@@ -22,7 +22,7 @@ const ChatHistory = ({ onSessionSwitch, currentSessionId }) => {
 
     const createNewSession = async () => {
         try {
-            const res = await axios.post('http://localhost:8000/api/chat/sessions');
+            const res = await axios.post('${API_BASE_URL}/api/chat/sessions');
             setSessions(prev => [res.data, ...prev]);
             onSessionSwitch(res.data.id);
             setIsOpen(false);
@@ -33,7 +33,7 @@ const ChatHistory = ({ onSessionSwitch, currentSessionId }) => {
 
     const switchSession = async (sessionId) => {
         try {
-            await axios.put(`http://localhost:8000/api/chat/sessions/${sessionId}/activate`);
+            await axios.put(`${API_BASE_URL}/api/chat/sessions/${sessionId}/activate`);
             onSessionSwitch(sessionId);
             setIsOpen(false);
         } catch (e) {
@@ -48,7 +48,7 @@ const ChatHistory = ({ onSessionSwitch, currentSessionId }) => {
             return;
         }
         try {
-            await axios.delete(`http://localhost:8000/api/chat/sessions/${sessionId}`);
+            await axios.delete(`${API_BASE_URL}/api/chat/sessions/${sessionId}`);
             fetchSessions();
             if (sessionId === currentSessionId) {
                 onSessionSwitch(sessions.find(s => s.id !== sessionId)?.id);
@@ -251,3 +251,4 @@ const ChatHistory = ({ onSessionSwitch, currentSessionId }) => {
 };
 
 export default ChatHistory;
+
