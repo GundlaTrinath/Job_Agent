@@ -303,14 +303,6 @@ Contributions are welcome! Here's how you can help:
 2. Describe the feature and its benefits
 3. Provide examples or mockups
 
-### Pull Requests
-1. Fork the repository
-2. Create a feature branch: `git checkout -b feature/amazing-feature`
-3. Make your changes
-4. Run tests (if available)
-5. Commit: `git commit -m 'Add amazing feature'`
-6. Push: `git push origin feature/amazing-feature`
-7. Open a Pull Request
 
 ### Development Guidelines
 - Follow existing code style
@@ -320,34 +312,12 @@ Contributions are welcome! Here's how you can help:
 
 ---
 
-## 📝 License
-
-This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
-
-### What this means:
-✅ Commercial use  
-✅ Modification  
-✅ Distribution  
-✅ Private use  
-
----
-
 ## 🙏 Acknowledgments
 
 - **Google Gemini AI** - Powering the intelligent features
 - **DuckDuckGo** - Real-time job search data
 - **React Community** - Excellent documentation and ecosystem
 - **FastAPI** - Amazing Python web framework
-
----
-
-## 📊 Project Status
-
-- ✅ Core features complete
-- ✅ Production-ready
-- ✅ Fully documented
-- ✅ Deployment guides included
-- 🔄 Continuous improvements
 
 ---
 
