@@ -323,10 +323,17 @@ Contributions are welcome! Here's how you can help:
 
 ## 🔗 Links
 
-- **Live Demo**: [Coming Soon]
+- **Live Demo**: [Job Agent](https://job-agent-lac.vercel.app/)
 - **Documentation**: [/docs](./docs)
 - **Issues**: [GitHub Issues](https://github.com/YOUR_USERNAME/Job_Agent/issues)
 - **Discussions**: [GitHub Discussions](https://github.com/YOUR_USERNAME/Job_Agent/discussions)
+
+---
+
+## Demo Video
+
+[![Job Agent Demo: Automating the Job Hunt with Multi-Agent AI](https://img.youtube.com/vi/QDeVVUk_FWI/0.jpg)](www.youtube.com)
+
 
 ---
 
